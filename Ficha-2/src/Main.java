@@ -4,6 +4,7 @@ public class Main {
     public static void main(String [] args){
         //Chamar aqui para testar
 
+        
     }
 
     public static float areaTriang(float altura, float base){
