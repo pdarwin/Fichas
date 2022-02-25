@@ -16,7 +16,6 @@ public class Banco {
     }
 
     public ContaBancaria getConta(String titular){
-
         for (ContaBancaria conta: contas) {
             if (conta.getTitular().equals(titular)){
                 return conta;
@@ -32,12 +31,12 @@ public class Banco {
     public void removeCasa(String morada){
         for(Casa casaAux : casas){
             if(casaAux.getMorada().equals(morada)){
-
                 casas.remove(casaAux);
             }
         }
-
-
+        for(Casa casaAux : casas){
+            System.out.println(casaAux.getMorada());
+        }
     }
 
 

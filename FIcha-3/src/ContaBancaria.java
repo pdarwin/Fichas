@@ -13,13 +13,6 @@ public class ContaBancaria {
         dataAbertura = new Date();
     }
 
-    public ContaBancaria(String titular, double saldo) {
-        this.titular = titular;
-        this.saldo = saldo;
-        dataAbertura = new Date();
-    }
-
-
     public String getTitular() {
         return titular;
     }
@@ -50,14 +43,5 @@ public class ContaBancaria {
         if (valor<=saldo){
             saldo = saldo - valor;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "ContaBancaria{" +
-                "titular='" + titular + '\'' +
-                ", saldo=" + saldo +
-                ", dataAbertura=" + dataAbertura +
-                '}';
     }
 }
