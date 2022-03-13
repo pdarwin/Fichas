@@ -21,6 +21,14 @@ Este repositório inclui as correções das fichas práticas do Laboratório de 
 - Maven
 - Ficheiros, exceções, conversão de json para objetos
 
+### Ficha 6
+- Diagrama de casos de utilização
+- Diagrama de classes e diagrama de dominio
+
+### Ficha 7
+- Spring Boot sem DB
+
+
 
 # 2. Avaliação
 
