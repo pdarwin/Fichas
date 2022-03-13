@@ -8,8 +8,7 @@ O funcionário de uma livraria pode fazer uma venda, caso o livro não faça par
 
 Identifique os atores, casos de utilização e modele o Diagrama de Casos de utilização do problema acima definido.
 
-[]()
-
+[Diagrama de casos de utilização](https://github.com/davidrobert99/Fichas/blob/main/Ficha-6/Use%20case.png)
 
 
 ## Exercicio 2
@@ -20,6 +19,5 @@ Numa universidade existem salas de aula, escritórios e departamentos. Uma unive
 
 Identifique as classes e as suas relações e crie um diagrama de classes para o problema acima definido.
 
+[Diagrama de classes](https://github.com/davidrobert99/Fichas/blob/main/Ficha-6/Class%20diagram.png)
 
-
-[]()
