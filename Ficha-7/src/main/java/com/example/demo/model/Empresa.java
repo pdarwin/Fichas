@@ -7,7 +7,6 @@ import java.util.UUID;
 public class Empresa {
     private String nome;
     private String morada;
-    private int numeroFuncionariosAtual;
     private int numeroFuncionariosDesdeCriacao;
     private List<Pessoa> listaPessoas;
     private UUID id;
@@ -15,7 +14,6 @@ public class Empresa {
     public Empresa(String nome, String morada) {
         this.nome = nome;
         this.morada = morada;
-        this.numeroFuncionariosAtual = 0;
         this.numeroFuncionariosDesdeCriacao = 0;
         listaPessoas = new ArrayList<>();
         id = UUID.randomUUID();
@@ -38,11 +36,7 @@ public class Empresa {
     }
 
     public int getNumeroFuncionariosAtual() {
-        return numeroFuncionariosAtual;
-    }
-
-    public void setNumeroFuncionariosAtual(int numeroFuncionariosAtual) {
-        this.numeroFuncionariosAtual = numeroFuncionariosAtual;
+        return listaPessoas.size();
     }
 
     public int getNumeroFuncionariosDesdeCriacao() {
@@ -66,6 +60,7 @@ public class Empresa {
     }
 
     public void addPessoa(Pessoa pessoa){
+        numeroFuncionariosDesdeCriacao++;
         listaPessoas.add(pessoa);
     }
 
