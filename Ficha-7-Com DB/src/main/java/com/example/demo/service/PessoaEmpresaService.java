@@ -15,6 +15,7 @@ public class PessoaEmpresaService {
     private final EmpresaRepository empresaRepository;
     private final PessoaRepository pessoaRepository;
 
+    @Autowired
     public PessoaEmpresaService(EmpresaRepository empresaRepository, PessoaRepository pessoaRepository) {
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
@@ -78,7 +79,10 @@ public class PessoaEmpresaService {
     }
 
     public Optional<Empresa> getEmpresa(Empresa emp){
-        if (emp.getId()!= null) {
+        return empresaRepository.findById(emp.getId());
+        /*if (emp.getId()!= null) {
+
+
             ArrayList<Empresa> empresasAux = new ArrayList<>();
             empresaRepository.findAll().forEach(empresasAux::add);
 
@@ -86,10 +90,10 @@ public class PessoaEmpresaService {
                 if (aux.getId().equals(emp.getId())) {
                     return Optional.of(aux);
                 }
-            }
+
         }
 
-        return Optional.empty();
+        return Optional.empty();}*/
     }
 
     public boolean addPessoaToEmpresa(Pessoa pessoa, Empresa empresa) {
