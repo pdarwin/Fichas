@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       {/*<Layout></Layout>*/}
       {/*<Contador></Contador>*/}
-      {<ToDo></ToDo>}
+      {/*<ToDo></ToDo>*/}
     </div>
   );
 }
