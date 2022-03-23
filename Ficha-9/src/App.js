@@ -8,9 +8,9 @@ import { ToDo } from "./ToDoList/ToDo";
 function App() {
   return (
     <div className="App">
-      {/*<Layout></Layout>*/}
-      {/*<Contador></Contador>*/}
-      {/*<ToDo></ToDo>*/}
+      {<Layout></Layout>}
+      {<Contador></Contador>}
+      {<ToDo></ToDo>}
     </div>
   );
 }
