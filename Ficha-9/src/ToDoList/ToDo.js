@@ -6,8 +6,8 @@ const API_URL = "http://localhost:8080";
 
 export function ToDo(props) {
   const [pessoas, setPessoas] = useState([]);
-  const [newPessoa, setNewPessoa] = useState({ nome: "", idade: 1 });
-  const [selectedPessoa, setSelectedPessoa] = useState(null);
+  const [novaPessoa, setNovaPessoa] = useState({ nome: "", idade: 1 });
+  const [pessoaSelected, setPessoaSelected] = useState(null);
 
   useEffect(() => {
     getPessoas();
@@ -37,37 +37,31 @@ export function ToDo(props) {
   }
 
   function addPessoa() {
-    if (newPessoa.nome.trim().length !== 0 && newPessoa.idade > 0) {
-      fetch(API_URL + "/addPessoa/2", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: {
-          nome: "Maria Joana",
-          idade: 82,
-        },
-      })
-        .then((response) => {
-          // Validar se o pedido foi feito com sucesso. Pedidos são feitos com sucesso normalmente quando o status é entre 200 e 299
-          if (response.status !== 200) {
-            throw new Error("There was an error finding pessoas");
-          }
+    //if (novaPessoa.nome.trim().length !== 0 && novaPessoa.idade > 0) {
+    fetch(API_URL + "/addPessoa/2", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ nome: "aaaa", idade: 1 }),
+    })
+      .then((response) => {
+        // Validar se o pedido foi feito com sucesso. Pedidos são feitos com sucesso normalmente quando o status é entre 200 e 299
+        console.log(response);
+        if (response.status !== 200) {
+          throw new Error("There was an error finding pessoas");
+        }
 
-          return response.json();
-        })
-        .then((parsedResponse) => {
-          if (!parsedResponse.status) {
-            alert(parsedResponse.message);
-            return;
-          }
-          // Precisamos de refrescar a lista, se tivessemos o id bastava adicionar um novo com o id
-          getPessoas();
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
+        return response.json();
+      })
+      .then((parsedResponse) => {
+        // Precisamos de refrescar a lista, se tivessemos o id bastava adicionar um novo com o id
+        getPessoas();
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    //}
   }
 
   /* function addTodo() {
@@ -122,27 +116,19 @@ export function ToDo(props) {
         <h3>Lista por nome da pessoa</h3>
       </header>
 
-      {/*       {pessoas.map((e) => {
-        console.log(e);
-        return (
-          <div key={e.id}>
-            <p>{e.id}</p>
-            <p>{e.name}</p>
-            <p>{e.age}</p>
-          </div>
-        );
-      })} */}
-
       <section className="list-container">
         {pessoas.map(function (element, index) {
           return (
             <div key={index} className="todo-card">
-              <p className="todo-text" onClick={() => setSelectedPessoa(index)}>
-                {element.nome}
+              <p
+                className="todo-text"
+                onClick={() => setPessoaSelected(element)}
+              >
+                {"Nome: " + element.nome + ", idade: " + element.idade}
               </p>
               <button
                 className="todo-remove"
-                onClick={() => removePessoa(index)}
+                onClick={() => removePessoa(element.id)}
               >
                 X
               </button>
@@ -152,17 +138,30 @@ export function ToDo(props) {
       </section>
 
       <div>
-        <p>Pessoa selecionada: {selectedPessoa}</p>
+        <p>Pessoa Selecionada</p>
+        <p>
+          nome:
+          {pessoaSelected.nome + " idade: " + pessoaSelected.idade}
+        </p>
+        <p>Nome:</p>
         <input
           type="text"
-          value={newPessoa}
+          value={novaPessoa.nome}
           onChange={(e) => {
-            setNewPessoa(e.target.value);
+            setNovaPessoa({ ...novaPessoa, nome: e.target.value });
           }}
         />
-        <button onClick={addPessoa}>Adicionar</button>
-        <button onClick={updatePessoa}>Atualizar</button>
-        <button onClick={removePessoa}>Remover</button>
+        <p>Idade:</p>
+        <input
+          type="number"
+          value={novaPessoa.idade}
+          onChange={(e) => {
+            setNovaPessoa({ ...novaPessoa, idade: e.target.value });
+          }}
+        />
+        <p>Ação:</p>
+        <button onClick={addPessoa}>Add Pessoa</button>
+        <button onClick={updatePessoa}>Update Pessoa</button>
       </div>
     </>
   );
